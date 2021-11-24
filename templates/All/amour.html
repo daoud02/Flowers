@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% extends 'base.html' %}
+{% block base %}
+<body>
+  <title>Amour | Fleuriste Casablanca</title>
+    <section id="featured" class="my-5 py-5">
+        <div class="container mt-5 py-5">
+          <h2 class="font-weight-bold">Fleurs Amour</h2>
+          <hr>
+          <p>Nos Bouquets Les Plus Vendus</p>
+        </div>
+        <div class=" row mx-auto container" style="padding-left: 10px; padding-top: 20px;">
+        {% for i in A %}
+          <div class="product text-center col-lg-3 col-md-4 col-12" style="padding-left: 22px;padding-bottom: 40px;">
+            <a href="{% url 'product' i.id%}" style="text-decoration: none;">
+                <img class="img-fluid mb-3" src="{{i.img.url}}" alt=""style="height:250px;width:250px">
+                <div class="star">
+                    <i class="fas fa-star" id="mm1"></i>
+                    <i class="fas fa-star" id="mm2"></i>
+                    <i class="fas fa-star"id="mm3"></i>
+                    <i class="fas fa-star" id="mm4"></i>
+                    <i class="fas fa-star" id="mm5"></i>
+                </div>
+                <h5 class="p-name">{{i.title}}</h5>
+                <h4 class="price" style="color: black;">{{i.price}} Dhs</h4>
+              </a>
+              <form action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{i.id}}">
+                <button class="buy-btn" id="liste" style="border-radius: 10px;">Ajouter au panier</button>
+              </form>
+            </div>
+        {% endfor %}
+        {% for i in B %}
+          <div class="product text-center col-lg-3 col-md-4 col-12" style="padding-left: 22px;padding-bottom: 40px;">
+            <a href="{% url 'product' i.id%}" style="text-decoration: none;">
+                <img class="img-fluid mb-3" src="{{i.img.url}}" alt=""style="height:250px;width:250px">
+                <div class="star">
+                    <i class="fas fa-star" id="mm1"></i>
+                    <i class="fas fa-star" id="mm2"></i>
+                    <i class="fas fa-star"id="mm3"></i>
+                    <i class="fas fa-star" id="mm4"></i>
+                    <i class="fas fa-star" id="mm5"></i>
+                </div>
+                <h5 class="p-name">{{i.title}}</h5>
+                <h4 class="price" style="color: black;">{{i.price}} Dhs</h4>
+              </a>
+              <form action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{i.id}}">
+                <button class="buy-btn" id="liste" style="border-radius: 10px;">Ajouter au panier</button>
+              </form>
+            </div>
+        {% endfor %}
+        {% for i in C %}
+          <div class="product text-center col-lg-3 col-md-4 col-12" style="padding-left: 22px;padding-bottom: 40px;">
+            <a href="{% url 'product' i.id%}" style="text-decoration: none;">
+                <img class="img-fluid mb-3" src="{{i.img.url}}" alt=""style="height:250px;width:250px">
+                <div class="star">
+                    <i class="fas fa-star" id="mm1"></i>
+                    <i class="fas fa-star" id="mm2"></i>
+                    <i class="fas fa-star"id="mm3"></i>
+                    <i class="fas fa-star" id="mm4"></i>
+                    <i class="fas fa-star" id="mm5"></i>
+                </div>
+                <h5 class="p-name">{{i.title}}</h5>
+                <h4 class="price" style="color: black;">{{i.price}} Dhs</h4>
+              </a>
+              <form action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{i.id}}">
+                <button class="buy-btn" id="liste" style="border-radius: 10px;">Ajouter au panier</button>
+              </form>
+            </div>
+        {% endfor %}
+        {% for i in D %}
+          <div class="product text-center col-lg-3 col-md-4 col-12" style="padding-left: 22px;padding-bottom: 40px;">
+            <a href="{% url 'product' i.id%}" style="text-decoration: none;">
+                <img class="img-fluid mb-3" src="{{i.img.url}}" alt=""style="height:250px;width:250px">
+                <div class="star">
+                    <i class="fas fa-star" id="mm1"></i>
+                    <i class="fas fa-star" id="mm2"></i>
+                    <i class="fas fa-star"id="mm3"></i>
+                    <i class="fas fa-star" id="mm4"></i>
+                    <i class="fas fa-star" id="mm5"></i>
+                </div>
+                <h5 class="p-name">{{i.title}}</h5>
+                <h4 class="price" style="color: black;">{{i.price}} Dhs</h4>
+              </a>
+              <form action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{i.id}}">
+                <button class="buy-btn" id="liste" style="border-radius: 10px;">Ajouter au panier</button>
+              </form>
+                
+            </div>
+        {% endfor %}
+        {% for i in E %}
+          <div class="product text-center col-lg-3 col-md-4 col-12" style="padding-left: 22px;padding-bottom: 40px;">
+            <a href="{% url 'product' i.id%}" style="text-decoration: none;">
+                <img class="img-fluid mb-3" src="{{i.img.url}}" alt=""style="height:250px;width:250px">
+                <div class="star">
+                    <i class="fas fa-star" id="mm1"></i>
+                    <i class="fas fa-star" id="mm2"></i>
+                    <i class="fas fa-star"id="mm3"></i>
+                    <i class="fas fa-star" id="mm4"></i>
+                    <i class="fas fa-star" id="mm5"></i>
+                </div>
+                <h5 class="p-name">{{i.title}}</h5>
+                <h4 class="price" style="color: black;">{{i.price}} Dhs</h4>
+              </a>
+              <form action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{i.id}}">
+                <button class="buy-btn" id="liste" style="border-radius: 10px;">Ajouter au panier</button>
+              </form>
+            </div>
+        {% endfor %}
+      </section>
+</body>
+{% endblock base %}
+</html>

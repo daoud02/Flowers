@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% block base %}
+<body>
+    <title>Livraison de fleurs à domicile en moins de 24H et pour toutes les occasions :
+      Saint-Valentin, 8 Mars, Fête des Mères… Appelez nous au +212 630 408 750!</title>
+    <section id = "home">
+        <div class="container">
+            <h5>Nouvelles Arrivées</h5>
+            <h1><span>Meilleur Prix</span> Cette Année</h1>
+            <p>Livraison de fleurs à domicile en moins de 24H et pour toutes les occasions :<br>
+                 Saint-Valentin, 8 Mars, Fête des Mères… Appelez nous au +212 630 408 750!
+            </p>
+            <a href="{% url 'boutique' %}"><button>DÉCOUVREZ NOS BOUQUETS</button></a>
+        </div>
+    </section>
+    <section id"new" class="container">
+      <div class="row p-0 m-0 py-5 text-center">
+        <div class="one col-lg-4 col-md-12 col-md-12 p-0 py-3">
+          <i class="fal fa-flower-tulip img-fluid " style="font-size: 100px; color: rgb(247, 169, 182);"></i>
+          <div class="details">
+            <h2 style="text-align: center;;padding-top: 13px;">Fleurs fraîches</h2>
+            <p class="pop" style="text-align: center;">Des bouquets pour toutes les occasions<br><br></p> 
+          </div>
+        </div>
+        <div class="one col-lg-4 col-md-12 col-md-12 p-0 py-3">
+          <i class="fad fa-truck img-fluid" style="font-size: 100px; color: rgb(247, 169, 182);"></i>
+          <div class="details">
+            <h2 style="text-align: center;padding-top: 13px;">Livraison Rapide</h2>
+            <p class="pop" style="text-align: center;padding-bottom: 20px;">35Dhs Frais de Livraison<br></p>
+          </div>
+        </div>
+        <div class="one col-lg-4 col-md-12 col-md-12 p-0 py-3">
+          <i class="fas fa-sync-alt img-fluid" style="font-size: 100px; color: rgb(247, 169, 182);"></i>
+          <div class="details">
+            <h2 style="text-align: center;padding-top: 13px;">Paiement 100%<br> Sécurisé</h2>
+            <p class="pop" style="text-align: center;">Paiement 3D Secure<br></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="featured" class="my-5 pd-5 sectpro">
+      <div class="container text-center mt-5 py-5">
+        <h3>Notre Vedette</h3>
+        <hr class="mx-auto">
+        <p>Nos Bouquets Les Plus Vendus</p>
+      </div>
+      <div class="row mx-auto container-fluid" style="padding-left:0px;padding-right:0px;padding-bottom:20px">
+      {% for x in amour %}
+      <div class="product text-center col-lg-3 col-md-4 col-12" style="padding-bottom: 8px;">
+          <a href="{% url 'product' id_test=x.id %}">
+            <img class="img-fluid mb-3" src="{{x.img.url}}" alt="">
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h5 class="p-name">{{x.title}}</h5>
+          <h4 class="price">{{x.price}} Dhs</h4>
+          <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{x.id}}">
+            <a href="{% url 'cart' %}">
+              <button class="buy-btn" id="liste" type="submit" style="border-radius: 10px;">Ajouter au panier</button>
+            </a>
+          </form>
+            
+        </div>
+      {% endfor %}
+      </div>
+      <div class="container text-center pb-5 divbtn">
+        <button class="btn_voirpro">
+        <h3>
+        <a id="boutique" href="{% url 'boutique' %}" style="color: white;">
+        Voir tout le catalogue
+        </a>
+        </h3>
+        </button>
+      </div>
+    </section>
+</body>
+{% endblock base %}
+</html>
+

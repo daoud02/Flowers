@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% block base %}
+<body>
+    <title>Panier | Fleuriste Casablanca</title>
+    <section class="my-5 py-5 cart-page">
+        <div class="container mt-5 py-5">
+        <table>
+            <tr>
+                <th style="text-align: center;">Produit</th>
+                <th style="text-align: center;">Sous-total</th>
+            </tr>
+            {% for ite in ITEMS %}
+            <tr>
+                
+                <td>
+                    <div class="cart-info">
+                        <img src="{{ite.product.img.url}}">
+                        <div>
+                            <p>{{ite.product.title}}</p>
+                            <small>Prix: {{ite.product.price}}Dhs</small>
+                            <br>
+                            <form action="{% url 'cart'%}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="id" value="{{ite.product.id}}">
+                                <button style="background-color: transparent;color: #ff5ca8;padding: 0px;" type="submit">Supprimer</button>
+                            </form>
+                        </div>
+                    </div>
+                </td>
+                <td style="text-align: center;">{{ite.get_total}} Dhs</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="total-price py-5">
+            <table>
+                <tbody>
+                   <tr>
+                    <td>Sous-total</td>
+                    <td>{{totalprice}} Dhs</td>
+                </tr>
+                <tr>
+                    {% if A == 0%}
+                    <td>livraison</td>
+                    <td>0 Dhs</td>
+                    {% else %}
+                    <td>livraison</td>
+                    <td>35 Dhs</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    {% if A == 0%}
+                    <td>Total</td>
+                    <td>0 Dhs</td>
+                    {% else %}
+                    <td>Total</td>
+                    <td>{{t}} Dhs</td>
+                    {% endif %}
+                </tr> 
+                </tbody>
+                <tfoot>
+                    {% if A == 0 %}
+                    <tr>
+                        <td colspan="3" style="text-align: center;padding-top: 35px;"><a href="#"><button style="opacity: 0.5;width: 250px; background-color: #ff5ca8; color: white; height: 50px;border-radius: 40px;font-size: 15px;" disabled>Valider la commande</button></a></td>
+                    </tr>
+                    {% elif A == 1 %}
+                    <tr>
+                        <td colspan="3" style="text-align: center;padding-top: 35px;"><a href="#"><button style="width: 250px; background-color: #ff5ca8; color: white; height: 50px;border-radius: 40px;font-size: 15px;">Valider la commande</button></a></td>
+                    </tr>
+                    {% endif %}
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    </section>
+</body>
+{% endblock base %}
+</html>
