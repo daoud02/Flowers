@@ -1,87 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-{% extends 'base.html' %}
-{% block base %}
-<body>
-    <title>Livraison de fleurs à domicile en moins de 24H et pour toutes les occasions :
-      Saint-Valentin, 8 Mars, Fête des Mères… Appelez nous au +212 630 408 750!</title>
-    <section id = "home">
-        <div class="container">
-            <h5>Nouvelles Arrivées</h5>
-            <h1><span>Meilleur Prix</span> Cette Année</h1>
-            <p>Livraison de fleurs à domicile en moins de 24H et pour toutes les occasions :<br>
-                 Saint-Valentin, 8 Mars, Fête des Mères… Appelez nous au +212 630 408 750!
-            </p>
-            <a href="{% url 'boutique' %}"><button>DÉCOUVREZ NOS BOUQUETS</button></a>
-        </div>
-    </section>
-    <section id"new" class="container">
-      <div class="row p-0 m-0 py-5 text-center">
-        <div class="one col-lg-4 col-md-12 col-md-12 p-0 py-3">
-          <i class="fal fa-flower-tulip img-fluid " style="font-size: 100px; color: rgb(247, 169, 182);"></i>
-          <div class="details">
-            <h2 style="text-align: center;;padding-top: 13px;">Fleurs fraîches</h2>
-            <p class="pop" style="text-align: center;">Des bouquets pour toutes les occasions<br><br></p> 
-          </div>
-        </div>
-        <div class="one col-lg-4 col-md-12 col-md-12 p-0 py-3">
-          <i class="fad fa-truck img-fluid" style="font-size: 100px; color: rgb(247, 169, 182);"></i>
-          <div class="details">
-            <h2 style="text-align: center;padding-top: 13px;">Livraison Rapide</h2>
-            <p class="pop" style="text-align: center;padding-bottom: 20px;">35Dhs Frais de Livraison<br></p>
-          </div>
-        </div>
-        <div class="one col-lg-4 col-md-12 col-md-12 p-0 py-3">
-          <i class="fas fa-sync-alt img-fluid" style="font-size: 100px; color: rgb(247, 169, 182);"></i>
-          <div class="details">
-            <h2 style="text-align: center;padding-top: 13px;">Paiement 100%<br> Sécurisé</h2>
-            <p class="pop" style="text-align: center;">Paiement 3D Secure<br></p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="featured" class="my-5 pd-5 sectpro">
-      <div class="container text-center mt-5 py-5">
-        <h3>Notre Vedette</h3>
-        <hr class="mx-auto">
-        <p>Nos Bouquets Les Plus Vendus</p>
-      </div>
-      <div class="row mx-auto container-fluid" style="padding-left:0px;padding-right:0px;padding-bottom:20px">
-      {% for x in amour %}
-      <div class="product text-center col-lg-3 col-md-4 col-12" style="padding-bottom: 8px;">
-          <a href="{% url 'product' id_test=x.id %}">
-            <img class="img-fluid mb-3" src="{{x.img.url}}" alt="">
-          <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <h5 class="p-name">{{x.title}}</h5>
-          <h4 class="price">{{x.price}} Dhs</h4>
-          <form action="" method="post">
-            {% csrf_token %}
-            <input type="hidden" name="id" value="{{x.id}}">
-            <a href="{% url 'cart' %}">
-              <button class="buy-btn" id="liste" type="submit" style="border-radius: 10px;">Ajouter au panier</button>
-            </a>
-          </form>
-            
-        </div>
-      {% endfor %}
-      </div>
-      <div class="container text-center pb-5 divbtn">
-        <button class="btn_voirpro">
-        <h3>
-        <a id="boutique" href="{% url 'boutique' %}" style="color: white;">
-        Voir tout le catalogue
-        </a>
-        </h3>
-        </button>
-      </div>
-    </section>
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>YallaShot Daoud</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body class="pb-5">
+  {% load static %}
+ <nav class="navbar navbar-light bg-light py-4 fixed-top">
+  <div class="container-fluid text-center">
+    <div class="navbar-brand text-center" style="font-size: 33px;">
+      <img src="{% static 'bb.jpg' %}" alt="" width="50" height="50" class="d-inline-block align-text-top">
+      YallaShot Daoud
+    </div>
+  </div>
+</nav>
+<section style="margin-top: 120px; text-align: right;" class="container pb-2">
+<a href="{% url 'yesterday' %}"><button style="box-sizing: border-box;float: right;width: 33.33%;background-color: #104783;height: 45px;color: #fff;font-size: 16px;padding: 0;border: 0;border-radius: 20px;">مباريات الأمس</button></a>
+<a href="{% url 'index' %}"><button style="box-sizing: border-box;float: right;width: 33.33%;background-color: #931800;height: 45px;color: #fff;font-size: 16px;padding: 0;border: 0;border-radius: 20px;">مباريات اليوم</button></a>
+<a href="{% url 'tomorrow' %}"><button style="box-sizing: border-box;float: right;width: 33.33%;background-color: #caa107;height: 45px;color: #fff;font-size: 16px;padding: 0;border: 0;border-radius: 20px;">مباريات الغد</button></a>
+</section>
+{% for i in AllMatch %}
+<section style="margin-top: 120px; text-align: right;" class="container">
+ <h2 class="pb-3">{{i.0}}</h2>
+ {% for j in i %}
+ {% if j == i.0 %}
+ {% else %}
+ <div class="container py-5" style="background-color: #f4f4f4;text-align: center;height: 197px;">
+    <div class="f_equipe" style="box-sizing: border-box;width: 30%;float: right;">
+      <img src="{{j.2}}" alt="">
+   <p style="font-size: 20px;">{{j.0}}</p>
+    </div>
+    <div class="f_score" style="box-sizing: border-box; width: 3%;float: right;height: 117px;">
+      <p style="position: relative;top: 41px;font-size: 20px;">{{j.1}}</p>
+    </div>
+    <div class="f_equipe" style="box-sizing: border-box;width: 30%;float: left;">
+      <img src="{{j.6}}" alt="">
+   <p style="font-size: 20px;">{{j.4}}</p>
+    </div>
+    <div class="f_score" style="box-sizing: border-box; width: 3%;float: left;height: 117px;">
+      <p style="position: relative;top: 41px;font-size: 20px;">{{j.5}}</p>
+    </div>
+    <div style="float: left;width: 33%;">
+      <button style="position: relative;top: 40px;left: 5px;border: 0px;width: 90%;">{{j.3}}</button>
+    </div>
+ </div>
+ {% endif %}
+ {% endfor %}
+</section>
+{% endfor %}
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </body>
-{% endblock base %}
 </html>
-
