@@ -19,7 +19,7 @@ def getliste(year , month , day):
 			soup2 = BeautifulSoup(str(i), 'html.parser')
 			mydivs2 = soup2.find_all("span")
 			D = []
-			D = [str(mydivs2[0].text)]
+			D.append(str(mydivs2[0].text))
 			soup2 = BeautifulSoup(str(i), 'html.parser')
 			mydivs2 = soup2.find_all("div" , class_='cin_cntnr')
 			for j in mydivs2:

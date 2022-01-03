@@ -34,7 +34,7 @@
    <p style="font-size: 20px;">{{j.0}}</p>
     </div>
     <div class="f_score" style="box-sizing: border-box; width: 3%;float: right;height: 117px;">
-      <p style="position: relative;top: 41px;font-size: 20px;">{{j.1}}</p>
+      <p style="position: relative;top: 40px;font-size: 20px;">{{j.1}}</p>
     </div>
     <div class="f_equipe" style="box-sizing: border-box;width: 30%;float: left;">
       <img src="{{j.6}}" alt="">
@@ -44,7 +44,17 @@
       <p style="position: relative;top: 41px;font-size: 20px;">{{j.5}}</p>
     </div>
     <div style="float: left;width: 33%;">
-      <button style="position: relative;top: 40px;left: 5px;border: 0px;width: 90%;">{{j.3}}</button>
+      {% if 'انتهت' == j.3 %}
+      <button style="position: relative;top: 40px;left: 5px;border: 0px;width: 40%; background-color: rgb(167, 165, 165); color: #fff;">{{j.3}}</button>
+      {% elif 'بعد قليل' == j.3  %}
+      <button style="position: relative;top: 40px;left: 5px;border: 0px;width: 40%; background-color: #000936; color: #fff;">{{j.3}}</button>
+      {% elif 'مباشر' == j.3 %}
+      <button style="position: relative;top: 40px;left: 5px;border: 0px;width: 40%; background-color: rgb(245, 63, 63); color: #fff;">{{j.3}}</button>
+      {% elif 'لم تبدأ' == j.3 %}
+      <button style="position: relative;top: 40px;left: 5px;border: 0px;width: 40%; background-color: rgb(167, 165, 165); color: #fff;">{{j.3}}</button>
+      {% else %}
+      <button style="position: relative;top: 40px;left: 5px;border: 0px;width: 40%; background-color: rgb(167, 165, 165); color: #fff;">{{j.3}}</button>
+      {% endif %}
     </div>
  </div>
  {% endif %}
